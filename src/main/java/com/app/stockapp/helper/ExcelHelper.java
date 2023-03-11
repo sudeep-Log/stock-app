@@ -1,10 +1,13 @@
 package com.app.stockapp.helper;
 
 import com.app.stockapp.entity.Stock;
+import com.app.stockapp.entity.User;
+import com.app.stockapp.repository.UserRepo;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.InputStream;
@@ -25,7 +28,7 @@ public class ExcelHelper {
         }
     }
 
-    public static List<Stock> saveExcelToSql(InputStream is){
+    public static List<Stock> saveExcelToSql(InputStream is, User user){
 
         List<Stock> listOfStocks = new ArrayList<>();
 
@@ -64,6 +67,8 @@ public class ExcelHelper {
                     }
                     cid++;
                 }
+                System.out.println("User ->"+ user.getUsername());
+                stock.setUserId(user.getUserId());
                 listOfStocks.add(stock);
             }
         }catch (Exception e){

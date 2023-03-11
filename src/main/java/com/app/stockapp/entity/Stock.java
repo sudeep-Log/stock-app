@@ -16,12 +16,22 @@ public class Stock {
 
     private Double averagePrice;
 
+    private Long userId;
 
-    public Stock(String symbol, String sector, Integer quantity, Double averagePrice) {
+    public Stock(String symbol, String sector, Integer quantity, Double averagePrice, Long userId) {
         this.symbol = symbol;
         this.sector = sector;
         this.quantity = quantity;
         this.averagePrice = averagePrice;
+        this.userId = userId;
+    }
+
+    public Long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Long userId) {
+        this.userId = userId;
     }
 
     public Stock() {
