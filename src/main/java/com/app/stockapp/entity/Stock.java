@@ -2,12 +2,17 @@ package com.app.stockapp.entity;
 
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 @Entity(name = "Stock")
 public class Stock {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long stockId;
+
     private String symbol;
 
     private String sector;
